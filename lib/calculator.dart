@@ -129,4 +129,53 @@ class _CalculatorState extends State<Calculator> {
       ),
     );
   }
+
+  // Calculator Login
+  int firstNum = 0;
+  int secondNum = 0;
+  String result = "";
+  String text = "";
+  String operation = "";
+
+  void calculate(String btnText) {
+    if (btnText == "C") {
+      result = "";
+      text = "";
+      firstNum = 0;
+      secondNum = 0;
+    } else if (btnText == "+" ||
+        btnText == "-" ||
+        btnText == "X" ||
+        btnText == "/") {
+      firstNum = int.parse(text);
+      result = "";
+      operation = btnText;
+    } else if (btnText == "=") {
+      secondNum = int.parse(text);
+      switch (operation) {
+        case "+":
+          result = (firstNum + secondNum).toString();
+          break;
+
+        case "-":
+          result = (firstNum - secondNum).toString();
+          break;
+
+        case "X":
+          result = (firstNum * secondNum).toString();
+          break;
+
+        case "/":
+          result = (firstNum / secondNum).toString();
+          break;
+        default:
+      }
+    } else {
+      result = int.parse(text + btnText).toString();
+    }
+
+    setState(() {
+      text = result;
+    });
+  }
 }

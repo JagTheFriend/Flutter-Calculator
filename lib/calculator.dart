@@ -12,7 +12,7 @@ class Calculator extends StatefulWidget {
 class _CalculatorState extends State<Calculator> {
   Widget numbButton(String btnText, Color btnColor, Color txtColor) {
     return ElevatedButton(
-      onPressed: () => {},
+      onPressed: () => {calculate(btnText)},
       style: ElevatedButton.styleFrom(
         fixedSize: const Size(70, 70),
         backgroundColor: btnColor,
@@ -34,7 +34,6 @@ class _CalculatorState extends State<Calculator> {
         backgroundColor: Colors.black,
         centerTitle: true,
       ),
-      // Body of the App
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 5),
         child: Column(
@@ -42,14 +41,13 @@ class _CalculatorState extends State<Calculator> {
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
-              // ignore: prefer_const_literals_to_create_immutables
               children: [
-                const Padding(
-                  padding: EdgeInsets.all(10.0),
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
                   child: Text(
-                    "0",
+                    text,
                     textAlign: TextAlign.left,
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.white,
                       fontSize: 80,
                     ),
@@ -73,7 +71,7 @@ class _CalculatorState extends State<Calculator> {
                 numbButton("7", (Colors.grey[850])!, Colors.white),
                 numbButton("8", (Colors.grey[850])!, Colors.white),
                 numbButton("9", (Colors.grey[850])!, Colors.white),
-                numbButton("X", Colors.orange, Colors.white),
+                numbButton("x", Colors.orange, Colors.white),
               ],
             ),
             const SizedBox(height: 10),
@@ -106,13 +104,11 @@ class _CalculatorState extends State<Calculator> {
                     shape: const StadiumBorder(),
                     backgroundColor: ((Colors.grey[850])!),
                   ),
-                  // ignore: prefer_const_constructors
-                  child: Padding(
-                    padding: const EdgeInsets.fromLTRB(28, 12, 90, 12),
-                    // ignore: prefer_const_constructors
+                  child: const Padding(
+                    padding: EdgeInsets.fromLTRB(28, 12, 90, 12),
                     child: Text(
                       "0",
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 35,
                         color: Colors.white,
                       ),
@@ -145,7 +141,7 @@ class _CalculatorState extends State<Calculator> {
       secondNum = 0;
     } else if (btnText == "+" ||
         btnText == "-" ||
-        btnText == "X" ||
+        btnText == "x" ||
         btnText == "/") {
       firstNum = int.parse(text);
       result = "";
